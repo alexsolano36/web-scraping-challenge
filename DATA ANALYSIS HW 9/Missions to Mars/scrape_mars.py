@@ -50,10 +50,9 @@ def scrape():
     try:
         html = browser.html
         #Create BeautifulSoup object; parse with 'html'
-        soup = bs(html, 'html.parser')
+        soup = BeautifulSoup(html, 'html.parser')
         mars_weather = soup.find('p', class_='TweetTextSize').text
-    except Exception as e:
-        print(e)
+    except:
         mars_weather="tweet not available"
         
 
@@ -61,7 +60,7 @@ def scrape():
     #Mars facts webpage scrape
     url = 'https://space-facts.com/mars/'
 
-    tables = pd.read_html(facts_url)[0].to_html(index=False, header=False)
+    tables = pd.read_html(url)[0].to_html(index=False, header=False)
 
     #hemispheres
 
